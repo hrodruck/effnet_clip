@@ -11,12 +11,12 @@ Main idea:
 
 # Q/D Setup instructions
 
-apt install ffmpeg libsm6 libxext6
-apt install nano
-apt install g++
-create venvs, setup repos
-for cascade repo, change numpy to 1.24.4
-for img2dataset, change albumentations to 1.2
-pip install ipykernel
-python -m ipykernel install --user
-jupyter notebook
+- apt install ffmpeg libsm6 libxext6
+- apt install nano
+- apt install g++
+- create venvs, setup repos
+- for cascade repo, change numpy to 1.24.4
+- for img2dataset, change albumentations to 1.2
+- pip install ipykernel
+- python -m ipykernel install --user
+- jupyter notebook
