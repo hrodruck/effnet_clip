@@ -9,6 +9,8 @@ Main idea:
 - train an MLP on the effnet latent such that the output from the MLP matches the CLIP latents
 - then, at inference time, you can have an MLP that translates from 16x24x24 effnet latents to 1x512 clip latents, without having to go through pixel or the image modality to perform semantic comparisons!
 
+Download jupyter notebook to see some results! If it's only to view it, you can just upload the file to google colab
+
 # Q/D Setup instructions
 
 - apt install ffmpeg libsm6 libxext6
