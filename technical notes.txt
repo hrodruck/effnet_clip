@@ -1,0 +1,33 @@
+EDIT:DON'T Use MSE loss as per this paper: https://arxiv.org/pdf/2307.12732
+Instead, use cosine loss with a twist as follows
+	
+	loss_fn = nn.CosineEmbeddingLoss(margin=0.4)
+	similar_loss = loss_fn(output, batch_clip, torch.ones(batch_size).to(device))
+        #shuffling the images to discourage collapse
+        shuffle_count = 8
+        rdn = torch.randperm(batch_size).to(device)
+        dissimilar_loss = loss_fn(output, batch_clip[rdn].view(batch_clip.size()), - torch.ones(batch_size).to(device))
+        for _ in range (shuffle_count-1):
+            rdn = torch.randperm(batch_size).to(device)
+            dissimilar_loss += loss_fn(output, batch_clip[rdn].view(batch_clip.size()), - torch.ones(batch_size).to(device))
+        loss = similar_loss + dissimilar_loss/shuffle_count
+
+neural network architecture is as follows
+
+from torch import nn
+class Latent2Latent(nn.Module):
+    """thanks to https://medium.com/@furcifer/a-dead-simple-image-search-engine-for-bangla-using-clip-contrastive-language-image-pre-training-a1f7f50b8419"""
+    def __init__(self):
+        super(Latent2Latent, self).__init__()
+        
+        
+        self.projection = nn.Sequential(
+            nn.Flatten(), nn.Linear(16*24*24, 2*4096), nn.ReLU(), nn.Linear(2*4096, 4096), nn.ReLU(), nn.Linear(4096, 1024), nn.ReLU(), nn.Linear(1024, 512)
+        )
+        '''
+        self.projection = nn.Sequential(
+            nn.Flatten(), nn.Linear(16*24*24, 512)
+        )
+        '''
+    def forward(self, effnet_latents):
+        return self.projection(effnet_latents)
