@@ -1,9 +1,0 @@
-start with a dataset of images
-	use https://github.com/rom1504/img2dataset
-resize them all to 2 copies: one with 768 and another with 224
-run effnet (the specific one from stable cascade) on the first set of copies to generate 16x24x24 latents
-run CLIP (original from openai) on the second set of copies to generate 1x768 latents
-train an MLP with the following architecture:
-	16x24x24 to 8x24x24
-	8x24x24 to 1x768
-such that the output from the MLP matches the CLIP latents
