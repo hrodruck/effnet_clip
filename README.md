@@ -14,8 +14,8 @@ Download jupyter notebook to see some results! If it's only to view it, you can 
 # Q/D Setup instructions
 
 - clone https://github.com/Stability-AI/StableCascade, place the notebook from this repo into the StableCascade folder
+- download sbu captions following instructions from https://github.com/rom1504/img2dataset/blob/main/dataset_examples/SBUcaptions.md
 - apt install ffmpeg libsm6 libxext6
-- apt install nano
 - apt install g++
 - create venvs, setup repos
 - for cascade repo, change numpy to 1.24.4
