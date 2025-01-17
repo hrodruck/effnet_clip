@@ -18,8 +18,8 @@ Download jupyter notebook to see some results! If it's only to view it, you can 
 - apt install ffmpeg libsm6 libxext6
 - apt install g++
 - create venvs, setup repos
-- for cascade repo, change numpy to 1.24.4
-- for img2dataset, change albumentations to 1.2
+- for cascade repo, change numpy to "<2"
+- for img2dataset, change albumentations to 1.4
 - pip install ipykernel
 - python -m ipykernel install --user
 - jupyter notebook
